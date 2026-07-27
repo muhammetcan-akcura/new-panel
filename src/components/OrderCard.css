@@ -1,0 +1,55 @@
+.order-card {
+  padding: 1.25rem;
+}
+
+.order-id {
+  font-weight: 600;
+  color: var(--accent-green);
+  font-size: 1.1rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-flex {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.value {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.link-value {
+  word-break: break-all;
+  color: var(--info-blue);
+}
+
+.link-value:hover {
+  text-decoration: underline;
+}
+
+.remains {
+  color: var(--warning-yellow);
+}

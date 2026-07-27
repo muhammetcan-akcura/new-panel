@@ -1,0 +1,135 @@
+/* Login Page Specific Styles */
+.login-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.login-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-fb-logo {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 1rem;
+}
+
+.login-header h1 {
+  color: #1c1e21;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.login-subtitle {
+  color: #65676b;
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.input-group label {
+  color: #65676b;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.input-group input {
+  background: #ffffff;
+  border: 1px solid #ccd0d5;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  color: #1c1e21;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #1877f2;
+  box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+.login-button {
+  background: #1877f2;
+  color: #fff;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s ease;
+}
+
+.login-button:hover:not(:disabled) {
+  background: #166fe5;
+}
+
+.login-button:disabled {
+  background: #e4e6eb;
+  color: #bcc0c4;
+  cursor: not-allowed;
+}
+
+.login-button.loading {
+  opacity: 0.8;
+}
+
+.login-error {
+  background: #ffebe8;
+  border: 1px solid #dd3c10;
+  color: #dd3c10;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.login-footer {
+  margin-top: 2rem;
+  text-align: center;
+  border-top: 1px solid #e4e6eb;
+  padding-top: 1.5rem;
+}
+
+.login-footer p {
+  color: #65676b;
+  font-size: 0.8rem;
+  margin: 0;
+}
