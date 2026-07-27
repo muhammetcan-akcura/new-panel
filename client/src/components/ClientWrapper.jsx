@@ -14,7 +14,7 @@ export default function ClientWrapper({ children }) {
 
   useEffect(() => {
     setMounted(true);
-    const authStatus = true; // BYPASS: localStorage.getItem('isAuthenticated') === 'true';
+    const authStatus = localStorage.getItem('isAuthenticated') === 'true';
     setIsAuth(authStatus);
 
     if (!authStatus && !isLoginPage) {
