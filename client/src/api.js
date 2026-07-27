@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3001/api/orders';
+const BASE_URL = 'https://new-panel-vx5g.onrender.com/api/orders';
 
 export const SERVICES = [
   { id: 1, realId: 6623, category: 'Video/Reel Views', name: 'video/Reel views', rate: 0.02 },

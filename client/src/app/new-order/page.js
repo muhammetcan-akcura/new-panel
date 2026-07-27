@@ -37,7 +37,7 @@ export default function NewOrderPage() {
     setMessage(null);
 
     try {
-      const res = await fetch('http://localhost:3001/api/new-order', {
+      const res = await fetch('https://new-panel-vx5g.onrender.com/api/new-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
