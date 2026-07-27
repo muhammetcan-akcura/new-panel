@@ -22,7 +22,7 @@ export default function AddFundsPage() {
         <p className="text-secondary" style={{ marginTop: '0.5rem' }}>Top up your account balance to place new orders.</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 350px', gap: '2rem' }}>
+      <div className="responsive-grid" style={{ gridTemplateColumns: '1fr 350px' }}>
         {/* Main form area */}
         <div className="card" style={{ padding: '2rem' }}>
           <h3 style={{ marginBottom: '1.5rem', fontSize: '1.1rem', fontWeight: 600 }}>Payment Details</h3>
