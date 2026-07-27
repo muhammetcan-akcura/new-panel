@@ -1,0 +1,9 @@
+[build]
+  # Netlify'ın hangi klasörde işlem yapacağını belirtiriz (Next.js client klasöründe olduğu için)
+  base = "client"
+  command = "npm run build"
+  publish = ".next"
+
+# Next.js'in Netlify üzerinde sorunsuz (SSR, Image Optimization vb.) çalışması için gerekli plugin
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
