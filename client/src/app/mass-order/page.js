@@ -190,7 +190,7 @@ export default function MassOrderPage() {
               style={{ width: '100%', minHeight: '300px', resize: 'vertical', fontFamily: 'monospace' }}
               value={ordersText}
               onChange={(e) => setOrdersText(e.target.value)}
-              placeholder="service_id | link | quantity&#10;service_id | link | quantity&#10;service_id | link | quantity"
+              placeholder="service_id | link | quantity"
               required
             ></textarea>
           </div>

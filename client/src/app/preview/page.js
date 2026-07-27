@@ -21,7 +21,7 @@ function PreviewContent() {
   const [injectRate, setInjectRate] = useState(2.4);
   
   // FB embed URL
-  const fbEmbedUrl = url ? `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=560` : null;
+  const fbEmbedUrl = url ? `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=560&locale=en_US` : null;
 
   useEffect(() => {
     if (!url) return;
@@ -104,7 +104,7 @@ function PreviewContent() {
       <div className={styles.header}>
         <div className={styles.title}>
           <span className={styles.liveBadge}>LIVE</span>
-          Stream Preview & Injection
+          Stream Preview
         </div>
         <button className={styles.backBtn} onClick={() => router.push('/')}>
           ← Back to Orders

@@ -15,6 +15,14 @@ export default function OrdersPage() {
   const [page, setPage] = useState(0);
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const s = params.get('search');
+      if (s) setSearchQuery(s);
+    }
+  }, []);
+
+  useEffect(() => {
     const loadOrders = async () => {
       setLoading(true);
       try {

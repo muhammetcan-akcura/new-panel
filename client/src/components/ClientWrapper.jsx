@@ -58,8 +58,8 @@ export default function ClientWrapper({ children }) {
         </main>
 
         {/* Floating Telegram Button */}
-        <a href="https://t.me/fblivepanel" target="_blank" rel="noreferrer" className="telegram-float-btn" aria-label="Contact us on Telegram">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a href="https://t.me/MCA400212" target="_blank" rel="noreferrer" className="telegram-float-btn" aria-label="Contact us on Telegram">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: 'translate(-1.5px, 1.5px)' }}>
             <path d="M22 2L2 9.5L9.5 12.5L14 9L11.5 14L19 22L22 2Z" fill="currentColor" />
           </svg>
         </a>

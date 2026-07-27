@@ -19,7 +19,7 @@ export default function ApiPage() {
         </div>
         <div className="card text-center" style={{ padding: '1.5rem' }}>
           <h3 className="text-secondary text-sm mb-2" style={{ textTransform: 'uppercase', fontWeight: 600 }}>API URL</h3>
-          <p style={{ fontSize: '1rem', fontWeight: 600, marginTop: '0.5rem' }}>https://fblivepanel.com.com/api/v2</p>
+          <p style={{ fontSize: '1rem', fontWeight: 600, marginTop: '0.5rem' }}>https://fblivestreampanel.netlify.app/api/v2</p>
         </div>
         <div className="card text-center" style={{ padding: '1.5rem' }}>
           <h3 className="text-secondary text-sm mb-2" style={{ textTransform: 'uppercase', fontWeight: 600 }}>API Key</h3>

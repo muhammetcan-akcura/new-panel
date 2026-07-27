@@ -1,9 +1,19 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchBalance } from '@/api';
 
 export default function AddFundsPage() {
   const [amount, setAmount] = useState('50');
   const [method, setMethod] = useState('crypto');
+  const [balance, setBalance] = useState('0.0000');
+
+  useEffect(() => {
+    fetchBalance().then(data => {
+      if (data && data.balance) {
+        setBalance(parseFloat(data.balance).toFixed(4));
+      }
+    });
+  }, []);
 
   return (
     <div className="container mt-4 mb-8">
@@ -73,7 +83,7 @@ export default function AddFundsPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div className="card" style={{ padding: '1.5rem', background: 'linear-gradient(135deg, rgba(24, 119, 242, 0.1) 0%, rgba(24, 119, 242, 0.02) 100%)', border: '1px solid rgba(24, 119, 242, 0.2)' }}>
             <h3 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Current Balance</h3>
-            <div style={{ fontSize: '2rem', fontWeight: 700, color: '#1877f2' }}>$0</div>
+            <div style={{ fontSize: '2rem', fontWeight: 700, color: '#1877f2' }}>${balance}</div>
           </div>
 
           <div className="card" style={{ padding: '1.5rem' }}>

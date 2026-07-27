@@ -212,3 +212,46 @@
 .backBtn:hover {
   background: var(--bg-hover);
 }
+
+@media (max-width: 992px) {
+  .content {
+    flex-direction: column;
+    height: auto;
+  }
+  .videoSection {
+    min-height: 400px;
+    flex: none;
+  }
+  .terminalSection {
+    min-height: 300px;
+    flex: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    height: auto;
+    overflow-y: auto;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .title {
+    font-size: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .videoSection {
+    min-height: 250px;
+  }
+  .techOverlay {
+    display: none; /* Hide complex overlays on small screens to save space and look cleaner */
+  }
+  .terminalHeader {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}

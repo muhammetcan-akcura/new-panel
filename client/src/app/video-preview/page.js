@@ -17,8 +17,8 @@ function VideoPreviewContent() {
   
   const [loadingAction, setLoadingAction] = useState(false);
 
-  // FB embed URL
-  const fbEmbedUrl = url ? `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=560` : null;
+  // FB embed URL - locale=en_US ile İngilizceye zorluyoruz
+  const fbEmbedUrl = url ? `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=560&locale=en_US` : null;
 
   const handleCancel = async () => {
     const reason = prompt("Enter cancel reason (e.g. Incorrect link):");
@@ -72,23 +72,62 @@ function VideoPreviewContent() {
       </div>
 
       <div className={styles.content}>
-        <div className={styles.videoSection}>
-          <iframe 
-            src={fbEmbedUrl} 
-            className={styles.videoFrame}
-            style={{ border: 'none', overflow: 'hidden' }} 
-            scrolling="no" 
-            frameBorder="0" 
-            allowFullScreen={true} 
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
+        <div className={styles.videoSection} style={{ flexDirection: 'column' }}>
+          <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className={styles.placeholderContent}>
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '1rem' }}>
+                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                <line x1="7" y1="2" x2="7" y2="22"></line>
+                <line x1="17" y1="2" x2="17" y2="22"></line>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <line x1="2" y1="7" x2="7" y2="7"></line>
+                <line x1="2" y1="17" x2="7" y2="17"></line>
+                <line x1="17" y1="17" x2="22" y2="17"></line>
+                <line x1="17" y1="7" x2="22" y2="7"></line>
+              </svg>
+              <span style={{ fontSize: '1.1rem', fontWeight: 600, letterSpacing: '1px' }}>MEDIA UNAVAILABLE OR LOADING</span>
+            </div>
+            <iframe 
+              src={fbEmbedUrl} 
+              className={styles.videoFrame}
+              style={{ border: 'none', overflow: 'hidden' }} 
+              scrolling="no" 
+              frameBorder="0" 
+              allowFullScreen={true} 
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
+          </div>
+          
+          <a 
+            href={url} 
+            target="_blank" 
+            rel="noreferrer" 
+            style={{
+              display: 'block',
+              width: '100%',
+              background: 'rgba(255,255,255,0.05)',
+              color: '#3b82f6',
+              textAlign: 'center',
+              padding: '0.75rem',
+              textDecoration: 'none',
+              fontWeight: 600,
+              fontSize: '0.9rem',
+              borderTop: '1px solid rgba(255,255,255,0.1)',
+              transition: 'background 0.2s',
+              zIndex: 3
+            }}
+            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+            onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+          >
+            ↗ Open Video in Facebook
+          </a>
         </div>
 
         <div className={styles.analyticsSection}>
           <div className={styles.statCard}>
             <div className={styles.statHeader}>Order Details</div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
+            <div className={`responsive-grid responsive-grid-half ${styles.statsGrid}`} style={{ marginTop: '1rem' }}>
               <div>
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Status</div>
                 <div style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--text-primary)', textTransform: 'capitalize' }}>{status}</div>
