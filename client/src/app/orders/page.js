@@ -4,13 +4,15 @@ import { fetchOrders } from '@/api';
 import OrderCard from '@/components/OrderCard';
 
 const STATUS_FILTERS = ['All', 'Awaiting', 'Pending', 'In progress', 'Processing', 'Completed', 'Partial', 'Canceled'];
+const TABS = ['Live Stream Views', 'Video Views'];
 
-export default function VideoViewsPage() {
+export default function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
+  const [activeTab, setActiveTab] = useState('Live Stream Views');
   const [activeFilter, setActiveFilter] = useState('All');
-
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(0);
 
@@ -20,9 +22,14 @@ export default function VideoViewsPage() {
       try {
         const allOrders = await fetchOrders(page);
         
+        // Filter based on activeTab
         const filteredOrders = allOrders.filter(order => {
           const name = (order.service_name || '').toLowerCase();
-          return name.includes('view') && !name.includes('live');
+          if (activeTab === 'Live Stream Views') {
+            return name.includes('live');
+          } else {
+            return name.includes('view') && !name.includes('live');
+          }
         });
         
         setOrders(filteredOrders);
@@ -34,7 +41,7 @@ export default function VideoViewsPage() {
     };
 
     loadOrders();
-  }, [page]); // reload on page change
+  }, [page, activeTab]); // reload on page or tab change
 
   const displayedOrders = orders.filter(order => {
     // Status filter
@@ -57,32 +64,27 @@ export default function VideoViewsPage() {
     return statusMatch && searchMatch;
   });
 
-  if (loading && page === 0) {
-    return (
-      <div className="container mt-4">
-        <h2 className="dashboard-title">Video Views</h2>
-        <div className="card mt-4 text-center">
-          <p className="text-secondary">Loading orders...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="container mt-4">
-        <h2 className="dashboard-title">Video Views</h2>
-        <div className="card mt-4" style={{ borderColor: 'var(--danger-red)' }}>
-          <p style={{ color: 'var(--danger-red)' }}>Error: {error}</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="container mt-4">
-      <div className="dashboard-header">
-        <h2 className="dashboard-title">Video Views</h2>
+      <div className="dashboard-header" style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
+        {TABS.map(tab => (
+          <button 
+            key={tab}
+            onClick={() => { setActiveTab(tab); setPage(0); }}
+            style={{
+              padding: '0.5rem 1.5rem',
+              borderRadius: '8px',
+              border: 'none',
+              background: activeTab === tab ? '#1877f2' : 'var(--bg-secondary)',
+              color: '#fff',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'background 0.2s'
+            }}
+          >
+            {tab}
+          </button>
+        ))}
       </div>
 
       <input 
@@ -104,8 +106,16 @@ export default function VideoViewsPage() {
           </button>
         ))}
       </div>
-      
-      {displayedOrders.length === 0 ? (
+
+      {loading && page === 0 ? (
+        <div className="card mt-4 text-center">
+          <p className="text-secondary">Loading orders...</p>
+        </div>
+      ) : error ? (
+        <div className="card mt-4" style={{ borderColor: 'var(--danger-red)' }}>
+          <p style={{ color: 'var(--danger-red)' }}>Error: {error}</p>
+        </div>
+      ) : displayedOrders.length === 0 ? (
         <div className="card text-center text-secondary">
           <p>No orders found for this status.</p>
         </div>

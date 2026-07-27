@@ -121,6 +121,12 @@ app.post('/api/new-order', async (req, res) => {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     });
+
+    // Orders sayfasındaki gibi aynı XOR şifrelemesini uyguluyoruz
+    if (response.data && response.data.order) {
+      response.data.order = encodeId(response.data.order);
+    }
+
     res.json(response.data);
   } catch (error) {
     console.error('New Order Error:', error.message);

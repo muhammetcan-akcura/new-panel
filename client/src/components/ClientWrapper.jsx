@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Navbar from './Navbar';
-import Sidebar from './Sidebar';
 
 export default function ClientWrapper({ children }) {
   const pathname = usePathname();
@@ -20,7 +19,7 @@ export default function ClientWrapper({ children }) {
     if (!authStatus && !isLoginPage) {
       router.replace('/');
     } else if (authStatus && isLoginPage) {
-      router.replace('/dashboard');
+      router.replace('/orders');
     }
   }, [pathname, isLoginPage, router]);
 
@@ -49,14 +48,10 @@ export default function ClientWrapper({ children }) {
 
   return (
     <div style={wrapperStyle}>
-      <input type="checkbox" id="sidebar-toggle" className="sidebar-toggle-checkbox" />
-      <div className="app-container">
+      <div className="app-container" style={{ display: 'block' }}>
         <Navbar />
-        <Sidebar />
 
-        <label htmlFor="sidebar-toggle" className="sidebar-overlay"></label>
-
-        <main className="main-content">
+        <main className="main-content" style={{ marginLeft: 0 }}>
           <div className="container mt-4">
             {children}
           </div>

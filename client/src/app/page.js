@@ -13,7 +13,7 @@ export default function LoginPage() {
   useEffect(() => {
     // Only run on client
     if (typeof window !== 'undefined' && localStorage.getItem('isAuthenticated') === 'true') {
-      router.replace('/dashboard');
+      router.replace('/orders');
     }
   }, [router]);
 
@@ -30,7 +30,7 @@ export default function LoginPage() {
 
       setTimeout(() => {
         localStorage.setItem('isAuthenticated', 'true');
-        router.push('/dashboard');
+        router.push('/orders');
       }, 1000);
     } else {
       setError('Invalid username or password.');
