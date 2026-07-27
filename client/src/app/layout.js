@@ -2,8 +2,8 @@ import ClientWrapper from '@/components/ClientWrapper';
 import './globals.css';
 
 export const metadata = {
-  title: 'fblivepanel - Provider Panel',
-  description: 'Facebook Views & Live Stream Provider Panel',
+  title: 'StreamPanel - Provider Panel',
+  description: 'Social Media Services & Stream Provider Panel',
 };
 
 export default function RootLayout({ children }) {

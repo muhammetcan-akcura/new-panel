@@ -41,12 +41,8 @@ export default function LoginPage() {
     <div className="login-wrapper">
       <div className="login-container">
         <div className="login-header">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
-            alt="Facebook Logo"
-            className="login-fb-logo"
-          />
-          <h1>fblivepanel</h1>
+          <div style={{ fontSize: '4rem', marginBottom: '0.5rem', lineHeight: 1 }}>📊</div>
+          <h1>StreamPanel</h1>
           <p className="login-subtitle">Login to your account</p>
         </div>
 
@@ -87,7 +83,7 @@ export default function LoginPage() {
         </form>
 
         <div className="login-footer">
-          <p>Welcome to Facebook Live Provider Panel</p>
+          <p>Welcome to Stream Provider Panel</p>
         </div>
       </div>
     </div>

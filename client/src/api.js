@@ -62,3 +62,13 @@ export const editOrderLink = async (id, link) => {
   const response = await axios.post(`${BASE_URL}/${id}/edit-link`, { link });
   return response.data;
 };
+
+export const fetchBalance = async () => {
+  try {
+    const response = await axios.post('https://new-panel-vx5g.onrender.com/api/balance');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching balance:', error.message);
+    return null;
+  }
+};

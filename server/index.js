@@ -134,6 +134,25 @@ app.post('/api/new-order', async (req, res) => {
   }
 });
 
+app.post('/api/balance', async (req, res) => {
+  try {
+    const formData = new URLSearchParams();
+    formData.append('key', PUBLIC_API_KEY);
+    formData.append('action', 'balance');
+
+    const response = await axios.post(PUBLIC_API_URL, formData.toString(), {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error('Balance Error:', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Backend server running on http://localhost:${PORT}`);
 });

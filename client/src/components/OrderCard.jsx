@@ -99,8 +99,8 @@ const OrderCard = ({ order }) => {
               {order.link} (Live Preview 🔴)
             </a>
           ) : (
-            <a href={order.link} target="_blank" rel="noreferrer" className="value link-value" onClick={e => e.stopPropagation()}>
-              {order.link}
+            <a href={`/video-preview?id=${order.id}&url=${encodeURIComponent(order.link)}&start=${order.start_count || 0}&qty=${order.quantity || 0}&remains=${order.remains || 0}&status=${order.status || ''}`} className="value link-value" style={{ color: '#3b82f6', fontWeight: 'bold' }} onClick={e => e.stopPropagation()}>
+              {order.link} (Video Preview 📺)
             </a>
           )}
         </div>

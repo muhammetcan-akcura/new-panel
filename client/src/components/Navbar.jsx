@@ -1,10 +1,26 @@
 'use client';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { fetchBalance } from '../api';
 
 const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
+  const [balance, setBalance] = useState('0.0000');
+
+  useEffect(() => {
+    const getBalance = async () => {
+      const data = await fetchBalance();
+      if (data && data.balance !== undefined) {
+        setBalance(parseFloat(data.balance).toFixed(4));
+      }
+    };
+    getBalance();
+    // Optional: Refresh balance every 60 seconds
+    const interval = setInterval(getBalance, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated');
@@ -27,8 +43,8 @@ const Navbar = () => {
         
         {/* Sol Taraf: Logo ve Linkler */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Link href="/orders" style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#fff', textDecoration: 'none', marginRight: '2.5rem' }}>
-            fblivepanel
+          <Link href="/orders" style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#fff', textDecoration: 'none', marginRight: '2.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ fontSize: '1.5rem' }}>📊</span> StreamPanel
           </Link>
           
           <nav style={{ display: 'flex', gap: '0.25rem' }}>
@@ -75,7 +91,7 @@ const Navbar = () => {
             color: '#fff',
             border: '1px solid rgba(255,255,255,0.1)'
           }}>
-            $0.0000
+            ${balance}
           </div>
           
           <Link href="/account" style={{ color: '#fff', textDecoration: 'none', fontWeight: 500, fontSize: '0.95rem' }}>
