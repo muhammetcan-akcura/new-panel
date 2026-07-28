@@ -24,7 +24,10 @@ export default function LoginPage() {
       return;
     }
 
-    if (username.trim() === 'admin' && password === 'Panel!2026Admin') {
+    const isAdmin = username.trim() === 'admin' && password === 'Panel!2026Admin';
+    const isDichvumat = username.trim() === 'dichvumat' && password === 'dichvumat2026';
+
+    if (isAdmin || isDichvumat) {
       setError('');
       setIsLoggingIn(true);
 
