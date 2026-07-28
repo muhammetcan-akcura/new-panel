@@ -24,7 +24,7 @@ export default function LoginPage() {
       return;
     }
 
-    const envUsers = process.env.NEXT_PUBLIC_USERS || 'admin:Panel!2026Admin,dichvumat:dichvumat2026';
+    const envUsers = process.env.NEXT_PUBLIC_USERS || 'admin:Panel!2026Admin';
     const usersList = envUsers.split(',').map(u => u.split(':'));
     
     const isValidUser = usersList.some(([u, p]) => u === username.trim() && p === password);
