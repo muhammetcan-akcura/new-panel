@@ -24,10 +24,12 @@ export default function LoginPage() {
       return;
     }
 
-    const isAdmin = username.trim() === 'admin' && password === 'Panel!2026Admin';
-    const isDichvumat = username.trim() === 'dichvumat' && password === 'dichvumat2026';
+    const envUsers = process.env.NEXT_PUBLIC_USERS || 'admin:Panel!2026Admin,dichvumat:dichvumat2026';
+    const usersList = envUsers.split(',').map(u => u.split(':'));
+    
+    const isValidUser = usersList.some(([u, p]) => u === username.trim() && p === password);
 
-    if (isAdmin || isDichvumat) {
+    if (isValidUser) {
       setError('');
       setIsLoggingIn(true);
 
